@@ -1,0 +1,28 @@
+Artificial Intelligence Notes
+
+1. Introduction
+Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, especially computer systems. It includes learning, reasoning, and self-correction.
+
+2. Types of AI
+- Narrow AI: Designed for a specific task (e.g., Chatbots, Image recognition).
+- General AI: A system with generalized human cognitive abilities.
+- Super AI: Future AI that surpasses human intelligence.
+
+3. Applications
+- Healthcare: Diagnosis and treatment recommendations.
+- Finance: Fraud detection, stock trading.
+- Education: Personalized learning.
+- Autonomous Vehicles: Self-driving cars.
+
+4. Advantages
+- Reduces human error
+- 24x7 availability
+- Faster decision-making
+
+5. Challenges
+- High cost of implementation
+- Lack of creativity
+- Risk of unemployment
+
+Conclusion:
+AI is a powerful technology that is transforming industries, but ethical considerations are equally important.

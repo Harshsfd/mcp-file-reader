@@ -1,6 +1,6 @@
+openai
 flask
 requests
-openai
 streamlit
 python-docx
 PyPDF2

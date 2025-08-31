@@ -1,6 +1,3 @@
-flask
-openai
-langchain
+streamlit
 python-docx
-pypdf2
-python-dotenv
+PyPDF2

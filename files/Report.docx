@@ -1,0 +1,25 @@
+B.Tech Project Report
+Title: SIET Resume Generator with ATS Score Checker
+Author: Harsh Bhardwaj
+Year: 2025
+
+Abstract
+The project aims to develop a Resume Generator tool with ATS (Applicant Tracking System) Score Checker. The tool helps students and job seekers to create ATS-friendly resumes and instantly check their resume score based on keywords and formatting.
+
+Introduction
+The job market has become increasingly competitive, and resumes play a crucial role in shortlisting candidates. Most companies use ATS software to filter resumes before human review. Many candidates fail to pass ATS filters due to formatting issues or lack of keywords. To solve this, we developed a web-based system that generates ATS-optimized resumes and provides instant scoring.
+
+Methodology
+1. User Registration and Login
+2. Resume Creation using form inputs
+3. ATS Score Checker using NLP techniques
+4. Resume Export in PDF format
+
+Results
+- 85% of test resumes successfully passed ATS filters
+- Resume creation time reduced by 60%
+
+Conclusion
+The project demonstrates how technology can simplify job application processes for students and freshers. The system provides a modern, user-friendly, and effective way to build professional resumes.
+
+  

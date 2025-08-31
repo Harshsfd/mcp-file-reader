@@ -1,37 +1,39 @@
-from flask import Flask, request, jsonify
-from server import file_server
-import json
-import openai
+import streamlit as st
+import os
+import docx
+import PyPDF2
 
-app = Flask(__name__)
+st.set_page_config(page_title="📂 MCP File Reader", layout="wide")
 
-openai.api_key = "YOUR_OPENAI_KEY"
+st.title("📂 MCP File Reader")
+st.write("Upload your files (TXT, PDF, DOCX) and read them easily!")
 
-@app.route("/list_files", methods=["GET"])
-def list_files():
-    response = file_server.handle_request(json.dumps({"action": "list_files"}))
-    return jsonify(json.loads(response))
+uploaded_file = st.file_uploader("Choose a file", type=["txt", "pdf", "docx"])
 
-@app.route("/read_file", methods=["GET"])
-def read_file():
-    filename = request.args.get("name")
-    response = file_server.handle_request(json.dumps({"action": "read_file", "filename": filename}))
-    return jsonify(json.loads(response))
-
-@app.route("/ask_ai", methods=["POST"])
-def ask_ai():
-    data = request.json
-    prompt = data.get("prompt", "")
-    context = data.get("context", "")
+if uploaded_file:
+    file_extension = uploaded_file.name.split(".")[-1].lower()
     
-    res = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant with file access."},
-            {"role": "user", "content": f"File Content: {context}\n\nQuestion: {prompt}"}
-        ]
-    )
-    return jsonify({"answer": res["choices"][0]["message"]["content"]})
+    content = ""
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    if file_extension == "txt":
+        content = uploaded_file.read().decode("utf-8")
+
+    elif file_extension == "pdf":
+        reader = PyPDF2.PdfReader(uploaded_file)
+        content = ""
+        for page in reader.pages:
+            content += page.extract_text() + "\n"
+
+    elif file_extension == "docx":
+        doc = docx.Document(uploaded_file)
+        content = "\n".join([para.text for para in doc.paragraphs])
+
+    st.subheader("📖 File Content")
+    st.text_area("Content", content, height=400)
+
+    # Optional: Save file in server
+    save_path = os.path.join("files", uploaded_file.name)
+    os.makedirs("files", exist_ok=True)
+    with open(save_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+    st.success(f"✅ File saved at {save_path}")

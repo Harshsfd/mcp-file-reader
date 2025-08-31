@@ -3,3 +3,4 @@ openai
 langchain
 python-docx
 pypdf2
+python-dotenv
